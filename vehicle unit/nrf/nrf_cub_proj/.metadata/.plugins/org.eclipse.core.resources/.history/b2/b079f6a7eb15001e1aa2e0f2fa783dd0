@@ -1,0 +1,133 @@
+/*hspi1
+ * NRF24l01.c
+ *
+ *  Created on: Jun 28, 2023
+ *      Author: LENOVO
+ */
+
+
+
+#include "stm32f1xx_hal.h"
+#include "NRF24l01.h"
+extern SPI_HandleTypeDef;
+
+#define NRF24_SPI &hspi1
+
+
+#define NRF24_CE_port   GPIOA
+#define NRF24_CE_PIN    GPIO_PIN_0
+
+#define NRF24_CSN_port   GPIOA
+#define NRF24_CSN_PIN    GPIO_PIN_1
+
+void CS_Select()
+{
+	HAL_GPIO_WritePin(NRF24_CSN_port, NRF24_CSN_PIN, GPIO_PIN_RESET);
+}
+
+void CS_UnSelect()
+{
+	HAL_GPIO_WritePin(NRF24_CSN_port, NRF24_CSN_PIN, GPIO_PIN_SET);
+}
+
+
+
+void CE_Enable()
+{
+	HAL_GPIO_WritePin(NRF24_CE_port, NRF24_CE_PIN, GPIO_PIN_SET);
+}
+
+void CE_Disable()
+{
+	HAL_GPIO_WritePin(NRF24_CE_port, NRF24_CE_PIN, GPIO_PIN_RESET);
+}
+
+void nrf_writeReg(uint8_t Reg,uint8_t Data)
+{
+
+	uint8_t buf[2];
+	buf[0]= Reg|1<<5;
+	buf[1]=Data;
+	//pull cs pin low to select the device
+	CS_Select();
+	HAL_SPI_Transmit(NRF24_SPI, buf, 2,1000 );
+	//pull cs pin to release the device
+	CS_UnSelect();
+}
+void nrf_writeRegMultiData(uint8_t Reg,uint8_t *Data,int sizeofdata)
+{
+
+	uint8_t buf[2];
+	buf[0]= Reg|1<<5;
+	//buf[1]=Data;
+	//pull cs pin low to select the device
+	CS_Select();
+	HAL_SPI_Transmit(NRF24_SPI, buf, 1,100 );
+	HAL_SPI_Transmit(NRF24_SPI, Data, sizeofdata,1000 );
+	//pull cs pin to release the device
+	CS_UnSelect();
+}
+
+uint8_t nrf_ReadReg(uint8_t Reg)
+{
+	uint8_t DATA=0;
+	//pull cs pin low to select the device
+	CS_Select();
+	HAL_SPI_Transmit(NRF24_SPI, &Reg, 1,100 );
+	HAL_SPI_Receive(NRF24_SPI, &DATA, 1, 100);
+	//pull cs pin to release the device
+	CS_UnSelect();
+	return DATA;
+}
+
+void nrf_ReadReg_MultiData(uint8_t Reg,uint8_t* DATA, int size )
+{
+
+	//pull cs pin low to select the device
+	CS_Select();
+	HAL_SPI_Transmit(NRF24_SPI, &Reg, 1,100 );
+	HAL_SPI_Receive(NRF24_SPI, DATA, size, 1000);
+	//pull cs pin to release the device
+	CS_UnSelect();
+
+}
+
+
+void sendCmd(uint8_t cmd)
+{
+	//pull cs pin low to select the device
+	CS_Select();
+	HAL_SPI_Transmit(NRF24_SPI, &cmd, 1,100 );
+	//pull cs pin to release the device
+	CS_UnSelect();
+}
+
+
+
+void NRF24_Init (void)
+{
+	// disable the chip before configuring the device
+	CE_Disable();
+	CS_UnSelect();
+
+
+	nrf_writeReg(CONFIG, 0);  // will be configured later
+
+	nrf_writeReg(EN_AA, 0);  // No Auto ACK
+
+	nrf_writeReg (EN_RXADDR, 0);  // Not Enabling any data pipe right now
+
+	nrf_writeReg (SETUP_AW, 0x03);  // 5 Bytes for the TX/RX address
+
+	nrf_writeReg (SETUP_RETR, 0);   // No retransmission
+
+	nrf_writeReg (RF_CH, 0);  // will be setup during Tx or RX
+
+	nrf_writeReg (RF_SETUP, 0x0E);   // Power= 0db, data rate = 2Mbps
+
+	// Enable the chip after configuring the device
+	CE_Enable();
+
+}
+
+

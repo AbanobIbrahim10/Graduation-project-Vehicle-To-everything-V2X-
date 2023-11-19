@@ -1,0 +1,17 @@
+../Core/Src/NRF24l01.c:26:6:CS_Select	8	static
+../Core/Src/NRF24l01.c:31:6:CS_UnSelect	8	static
+../Core/Src/NRF24l01.c:37:6:CE_Enable	8	static
+../Core/Src/NRF24l01.c:42:6:CE_Disable	8	static
+../Core/Src/NRF24l01.c:50:6:nrf24_WriteReg	24	static
+../Core/Src/NRF24l01.c:66:6:nrf24_WriteRegMulti	32	static
+../Core/Src/NRF24l01.c:83:9:nrf24_ReadReg	24	static
+../Core/Src/NRF24l01.c:101:6:nrf24_ReadReg_Multi	24	static
+../Core/Src/NRF24l01.c:115:6:nrfsendCmd	16	static
+../Core/Src/NRF24l01.c:126:6:nrf24_reset	40	static
+../Core/Src/NRF24l01.c:174:6:NRF24_Init	8	static
+../Core/Src/NRF24l01.c:205:6:NRF24_TxMode	24	static
+../Core/Src/NRF24l01.c:228:9:NRF24_Transmit	24	static
+../Core/Src/NRF24l01.c:265:6:NRF24_RxMode	24	static
+../Core/Src/NRF24l01.c:305:9:isDataAvailable	24	static
+../Core/Src/NRF24l01.c:321:6:NRF24_Receive	24	static
+../Core/Src/NRF24l01.c:347:6:NRF24_ReadAll	32	static

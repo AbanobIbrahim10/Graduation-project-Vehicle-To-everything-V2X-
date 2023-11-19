@@ -1,0 +1,14 @@
+17:37:12 **** Build of configuration Debug for project lastVersion_nrf ****
+make -j8 all 
+arm-none-eabi-size   lastVersion_nrf.elf 
+   text	   data	    bss	    dec	    hex	filename
+   8884	     44	   1660	  10588	   295c	lastVersion_nrf.elf
+Finished building: default.size.stdout
+ 
+17:37:17 **** Incremental Build of configuration Debug for project lastVersion_nrf ****
+make -j8 all 
+arm-none-eabi-size   lastVersion_nrf.elf 
+   text	   data	    bss	    dec	    hex	filename
+   8884	     44	   1660	  10588	   295c	lastVersion_nrf.elf
+Finished building: default.size.stdout
+ 
