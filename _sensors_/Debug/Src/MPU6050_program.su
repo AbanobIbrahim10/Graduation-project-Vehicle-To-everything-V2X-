@@ -1,0 +1,11 @@
+../Src/MPU6050_program.c:24:6:MPU6050_vInit	8	static
+../Src/MPU6050_program.c:66:7:MPU6050_vReadRegisterValue	24	static
+../Src/MPU6050_program.c:81:6:MPU6050_vReadGyro_X	16	static
+../Src/MPU6050_program.c:89:6:MPU6050_vReadGyro_Y	16	static
+../Src/MPU6050_program.c:97:6:MPU6050_vReadGyro_Z	16	static
+../Src/MPU6050_program.c:105:6:MPU6050_vReadAccel_X	16	static
+../Src/MPU6050_program.c:113:6:MPU6050_vReadAccel_Y	16	static
+../Src/MPU6050_program.c:121:6:MPU6050_vReadAccel_Z	16	static
+../Src/MPU6050_program.c:129:6:MPU6050_vReadGyro_ALL	24	static
+../Src/MPU6050_program.c:144:6:MPU6050_vReadAccel_ALL	24	static
+../Src/MPU6050_program.c:159:7:MPU6050_vDetectChange	56	static

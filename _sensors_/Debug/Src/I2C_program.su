@@ -1,0 +1,7 @@
+../Src/I2C_program.c:18:6:I2C_vInit	8	static
+../Src/I2C_program.c:51:7:I2C_vStartCond	16	static
+../Src/I2C_program.c:73:7:I2C_vWriteAddress	24	static
+../Src/I2C_program.c:101:7:I2C_vWriteData	24	static
+../Src/I2C_program.c:132:6:I2C_vStopCond	16	static
+../Src/I2C_program.c:145:6:I2C_vWrite	16	static
+../Src/I2C_program.c:156:7:I2C_u8ReceiveData	24	static

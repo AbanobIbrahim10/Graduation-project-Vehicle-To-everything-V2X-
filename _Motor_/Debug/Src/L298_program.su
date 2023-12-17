@@ -1,0 +1,9 @@
+../Src/L298_program.c:16:6:L298_vInit	16	static
+../Src/L298_program.c:30:6:L298_vMoveForward	16	static
+../Src/L298_program.c:38:6:L298_vMoveBackward	16	static
+../Src/L298_program.c:46:6:L298_vStop	16	static
+../Src/L298_program.c:54:6:CAR_vMoveForward	24	static
+../Src/L298_program.c:62:6:CAR_vMoveBackward	24	static
+../Src/L298_program.c:72:6:CAR_vMoveLeft	24	static
+../Src/L298_program.c:80:6:CAR_vMoveRight	24	static
+../Src/L298_program.c:89:6:CAR_vStop	24	static

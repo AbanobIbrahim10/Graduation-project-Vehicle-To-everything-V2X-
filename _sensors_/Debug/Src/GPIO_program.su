@@ -1,0 +1,7 @@
+../Src/GPIO_program.c:14:6:GPIO_vInit	16	static
+../Src/GPIO_program.c:39:6:GPIO_vSetPinMode	16	static
+../Src/GPIO_program.c:96:6:GPIO_vSetPinConfig	16	static
+../Src/GPIO_program.c:146:6:GPIO_vSetPinValue	16	static
+../Src/GPIO_program.c:184:7:GPIO_u8GetPinValue	24	static
+../Src/GPIO_program.c:205:6:GPIO_vPinLock	16	static
+../Src/GPIO_program.c:233:6:GPIO_vSetPinAltFn	16	static
